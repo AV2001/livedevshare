@@ -3,7 +3,7 @@
     "displayName": "Live Dev Share",
     "description": "Seamlessly share your live coding sessions and real-time development changes with anyone on the internet, directly from VS Code.",
     "version": "0.0.1",
-    "publisher": "Anirudh Vadlamani",
+    "publisher": "AnirudhVadlamani",
     "engines": {
         "vscode": "^1.86.0"
     },
