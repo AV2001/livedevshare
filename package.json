@@ -1,0 +1,39 @@
+{
+    "name": "livedevshare",
+    "displayName": "Live Dev Share",
+    "description": "Seamlessly share your live coding sessions and real-time development changes with anyone on the internet, directly from VS Code.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.86.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "livedevshare.startNgrokTunnel",
+                "title": "Start Tunnel"
+            }
+        ]
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "pretest": "npm run lint",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.6",
+        "@types/node": "18.x",
+        "@types/vscode": "^1.86.0",
+        "@vscode/test-cli": "^0.0.4",
+        "@vscode/test-electron": "^2.3.9",
+        "eslint": "^8.56.0",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "ngrok": "^5.0.0-beta.2"
+    }
+}
