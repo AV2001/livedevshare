@@ -10,6 +10,7 @@
     "categories": [
         "Other"
     ],
+    "icon": "assets/livedevshare-logo.png",
     "activationEvents": [],
     "main": "./extension.js",
     "contributes": {
