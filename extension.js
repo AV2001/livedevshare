@@ -1,5 +1,5 @@
 const vscode = require('vscode');
-const ngrok = require('ngrok');
+const ngrok = require('@ngrok/ngrok');
 
 function activate(context) {
     // Create and display a status bar item for starting the ngrok tunnel
@@ -28,7 +28,12 @@ function activate(context) {
             }
 
             try {
-                const url = await ngrok.connect({ addr: port });
+                const url = await ngrok.connect({
+                    addr: port,
+                    authtoken:
+                        '2bri411Zys9Xtmvq6IUgJyYH1e3_2YjjX9zJQgnPMPuFV8x8X',
+                });
+
                 statusBarNgrok.tooltip = `Live Share running: ${url}`;
                 statusBarNgrok.text = `$(globe) Live Share Active`;
 
@@ -40,18 +45,20 @@ function activate(context) {
                 // Register a command to open the ngrok URL, or update the existing command
                 context.subscriptions.push(
                     vscode.commands.registerCommand(openUrlCommandId, () => {
-                        vscode.env.openExternal(vscode.Uri.parse(url));
+                        vscode.env.openExternal(vscode.Uri.parse(url.url()));
                     })
                 );
 
                 vscode.window
                     .showInformationMessage(
-                        `ngrok tunnel started! Access your server at: ${url}`,
+                        `ngrok tunnel started! Access your server at: ${url.url()}`,
                         'Open URL'
                     )
                     .then((selection) => {
                         if (selection === 'Open URL') {
-                            vscode.env.openExternal(vscode.Uri.parse(url));
+                            vscode.env.openExternal(
+                                vscode.Uri.parse(url.url())
+                            );
                         }
                     });
             } catch (error) {
